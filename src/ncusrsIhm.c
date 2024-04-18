@@ -15,9 +15,23 @@ void initIhm()
 
 void draw(int col, int distance)
 {
+	#ifdef _WIN32
+	attron(A_DIM);
+	#endif // windows
+	
 	for (int i = distance; i < row - distance; i++) {
+		#ifdef _WIN32
+		mvprintw(i, col, " ");
+		#endif // windows
+		
+		#ifdef linux
 		mvprintw(i, col, "#");
+		#endif // linux
+		
 	}
+	#ifdef _WIN32
+	attroff(A_DIM);
+	#endif // windows
 }
 
 void disposeIhm()
